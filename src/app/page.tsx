@@ -1,7 +1,14 @@
+"use client";
+import { Layout } from "antd";
+import { SnippetsFilled } from "@ant-design/icons";
+import HeaderHome from "@/components/header/header";
+
+const { Header, Content } = Layout;
+
 export default function Home() {
   return (
-    <div>
-      <h1>Oi</h1>
-    </div>
+    <Layout>
+      <HeaderHome />
+    </Layout>
   );
 }

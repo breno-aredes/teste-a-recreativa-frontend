@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "normalize.css";
+import "antd/dist/reset.css";
 
 export const metadata: Metadata = {
   title: "Teste",
