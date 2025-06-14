@@ -7,7 +7,7 @@ import FileUpload from "@/components/FileInput";
 import { plansServices } from "@/services/plansServices";
 import { useLoading } from "@/hooks/useLoading";
 import PlanForm from "../planForm";
-import { Plan } from "@/types/plansTypes";
+import { Plan, PlanWithOptionalFields } from "@/types/plansTypes";
 
 const { Content } = Layout;
 
@@ -16,10 +16,12 @@ export default function HomeContent({}) {
   const { setLoading } = useLoading();
   const [plan, setPlan] = useState<Plan | undefined>(undefined);
   const [form] = Form.useForm<Plan>();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileUpload = async (file: File) => {
     try {
       setLoading(true);
+      setSelectedFile(file);
       const res = await plansServices.ScanPlan(file);
       if (res.data && res.data.plan) {
         setPlan(res.data.plan);
@@ -36,6 +38,23 @@ export default function HomeContent({}) {
       form.setFieldsValue(plan);
     }
   }, [plan, Form]);
+
+  const handlePlanFinish = async (values: Plan) => {
+    try {
+      setLoading(true);
+
+      const planWithFile: PlanWithOptionalFields = {
+        ...values,
+        file: selectedFile || undefined,
+      };
+
+      await plansServices.CreatePlan(planWithFile);
+    } catch (err) {
+      console.error("Erro ao criar plano:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Content className="content">
@@ -81,12 +100,7 @@ export default function HomeContent({}) {
                         </span>
                       }
                     >
-                      <PlanForm
-                        onFinish={(values: Plan) => {
-                          console.log("Plano enviado:", values);
-                        }}
-                        form={form}
-                      />
+                      <PlanForm onFinish={handlePlanFinish} form={form} />
                     </Card>
                   </div>
                 </div>
