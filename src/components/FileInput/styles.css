@@ -46,3 +46,19 @@
   display: flex;
   gap: 8px;
 }
+
+.custom-button {
+  background: linear-gradient(
+    226deg,
+    rgba(117, 76, 164, 1) 0%,
+    rgba(103, 123, 229, 1) 100%
+  ) !important;
+}
+
+.custom-button-red {
+  background: linear-gradient(
+    226deg,
+    rgb(164, 76, 76) 0%,
+    rgb(229, 103, 103) 100%
+  ) !important;
+}

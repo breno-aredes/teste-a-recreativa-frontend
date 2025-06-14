@@ -159,23 +159,26 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
               icon={<EyeOutlined />}
               type="primary"
               onClick={handlePreview}
-              disabled={
-                file.type !== "application/pdf" &&
-                file.type !==
-                  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-              }
               loading={uploading}
+              className="custom-button "
             >
               Visualizar
             </Button>
             <Button
               icon={<DownloadOutlined />}
               onClick={handleDownload}
-              type="default"
+              type="primary"
+              className="custom-button "
             >
               Baixar
             </Button>
-            <Button icon={<DeleteOutlined />} danger onClick={handleRemove}>
+            <Button
+              icon={<DeleteOutlined />}
+              type="primary"
+              danger
+              className="custom-button-red"
+              onClick={handleRemove}
+            >
               Remover
             </Button>
           </div>

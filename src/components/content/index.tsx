@@ -5,7 +5,7 @@ import { FileAddOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { FaEdit, FaUpload } from "react-icons/fa";
 
 import "./styles.css";
-import FileUpload from "@/components/FileImput";
+import FileUpload from "@/components/FileInput";
 
 const { Content } = Layout;
 
