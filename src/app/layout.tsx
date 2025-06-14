@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { App as AntdApp } from "antd";
 import "antd/dist/reset.css";
+import ClientProviders from "@/hooks";
 
 export const metadata: Metadata = {
   title: "Teste",
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AntdApp>{children}</AntdApp>
+        <ClientProviders>
+          <AntdApp>{children}</AntdApp>
+        </ClientProviders>
       </body>
     </html>
   );
