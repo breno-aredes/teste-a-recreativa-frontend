@@ -10,6 +10,7 @@ import type { UploadProps } from "antd";
 import { renderAsync } from "docx-preview";
 import "antd/dist/reset.css";
 import "./styles.css";
+import "../../styles/globalStyles.css";
 
 const { Dragger } = Upload;
 
