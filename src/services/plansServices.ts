@@ -1,6 +1,6 @@
 import { AxiosPromise } from "axios";
 import { api } from "./api";
-import { ScanPlanResponse } from "@/types/services/plansResponse";
+import { ScanPlanResponse } from "@/types/plansTypes";
 
 export const plansServices = {
   ScanPlan(file: File): AxiosPromise<ScanPlanResponse> {

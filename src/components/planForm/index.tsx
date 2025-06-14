@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, FormInstance } from "antd";
-import { Plan } from "@/types/plansResponse";
+import { Plan } from "@/types/plansTypes";
 import "../../styles/globalStyles.css";
 const { TextArea } = Input;
 

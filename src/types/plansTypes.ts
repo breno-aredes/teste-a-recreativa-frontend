@@ -1,4 +1,4 @@
-export type Plan = {
+export interface Plan {
   title: string;
   subject: string;
   grade: string;
@@ -9,8 +9,8 @@ export type Plan = {
   evaluation: string;
   homework: string;
   notes: string;
-};
+}
 
-export type ScanPlanResponse = {
+export interface ScanPlanResponse {
   plan: Plan;
-};
+}

@@ -1,31 +1,41 @@
-import React, { useState } from "react";
-import { Card, Tabs, Layout } from "antd";
+import React, { useEffect, useState } from "react";
+import { Card, Tabs, Layout, Form } from "antd";
 import { FileAddOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import "./styles.css";
 import FileUpload from "@/components/FileInput";
 import { plansServices } from "@/services/plansServices";
 import { useLoading } from "@/hooks/useLoading";
+import PlanForm from "../planForm";
+import { Plan } from "@/types/plansTypes";
 
 const { Content } = Layout;
 
 export default function HomeContent({}) {
   const [activeTab, setActiveTab] = useState("1");
-  const [uploadedFile, setUploadedFile] = useState<File | undefined>(undefined);
   const { setLoading } = useLoading();
+  const [plan, setPlan] = useState<Plan | undefined>(undefined);
+  const [form] = Form.useForm<Plan>();
 
   const handleFileUpload = async (file: File) => {
-    setUploadedFile(file);
     try {
       setLoading(true);
       const res = await plansServices.ScanPlan(file);
-      console.log(res.data);
+      if (res.data && res.data.plan) {
+        setPlan(res.data.plan);
+      }
     } catch (err) {
-      console.error("Erro ao enviar plano:", err);
+      console.error("Erro ao enviar arquivo:", err);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (plan) {
+      form.setFieldsValue(plan);
+    }
+  }, [plan, Form]);
 
   return (
     <Content className="content">
@@ -70,7 +80,14 @@ export default function HomeContent({}) {
                           2. Preencher Informações
                         </span>
                       }
-                    ></Card>
+                    >
+                      <PlanForm
+                        onFinish={(values: Plan) => {
+                          console.log("Plano enviado:", values);
+                        }}
+                        form={form}
+                      />
+                    </Card>
                   </div>
                 </div>
               ),
