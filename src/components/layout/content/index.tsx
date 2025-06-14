@@ -5,11 +5,17 @@ import { FileAddOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { FaEdit, FaUpload } from "react-icons/fa";
 
 import "./styles.css";
+import FileUpload from "@/components/common/FileImput";
 
 const { Content } = Layout;
 
 export default function HomeContent({}) {
   const [activeTab, setActiveTab] = useState("1");
+  const [uploadedFile, setUploadedFile] = useState();
+
+  const handleFileUpload = (file: any) => {
+    setUploadedFile(file);
+  };
 
   return (
     <Content className="content">
@@ -39,7 +45,9 @@ export default function HomeContent({}) {
                         </span>
                       }
                       className="custom-header-card"
-                    ></Card>
+                    >
+                      <FileUpload onFileUpload={handleFileUpload} />
+                    </Card>
                   </div>
 
                   <div className="col">

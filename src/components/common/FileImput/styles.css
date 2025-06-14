@@ -1,0 +1,48 @@
+.input-content {
+  width: 100% !important;
+}
+
+.input-content .ant-upload-wrapper {
+  display: block !important;
+}
+
+.icon-content .anticon-inbox svg {
+  display: flex;
+  justify-content: center;
+  color: #6c757d !important;
+  width: 100%;
+}
+
+.custom-modal {
+  top: 5vh !important;
+  padding: 0 !important;
+  max-width: 90vw !important;
+}
+
+.custom-modal .ant-modal-content {
+  padding: 20px !important;
+}
+
+.custom-modal .ant-modal-body {
+  height: 80vh !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.docx-style {
+  width: 100%;
+  height: 80vh;
+  overflow: auto;
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+
+.file-buttons {
+  display: flex;
+  gap: 8px;
+}
