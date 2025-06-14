@@ -1,7 +1,13 @@
+"use client";
+import HomeContent from "@/components/content";
+import HeaderHome from "@/components/header";
+import { Layout } from "antd";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Oi</h1>
-    </div>
+    <Layout>
+      <HeaderHome />
+      <HomeContent />
+    </Layout>
   );
 }

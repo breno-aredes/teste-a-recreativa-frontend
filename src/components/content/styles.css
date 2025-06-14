@@ -1,0 +1,76 @@
+.content {
+  padding: 50px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f5f5f5;
+  border: none;
+}
+
+.content span {
+  display: flex;
+  gap: 8px;
+}
+
+.card span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flex-row {
+  display: flex;
+  gap: 24px;
+  min-height: 600px;
+}
+
+.col {
+  flex: 1;
+  border: none !important;
+}
+
+.custom-header-card .ant-card-head {
+  background: #f5f5f5 !important;
+  color: black;
+}
+
+.custom-tabs .ant-tabs-tab {
+  color: black;
+  border-radius: 8px;
+  padding: 8px 24px !important;
+  border: none !important;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active {
+  background: #754ca4;
+  background: linear-gradient(
+    226deg,
+    rgba(117, 76, 164, 1) 0%,
+    rgba(103, 123, 229, 1) 100%
+  ) !important;
+  color: white !important;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: white !important;
+}
+
+.custom-tabs .ant-tabs-tab:not(.ant-tabs-tab-active):hover {
+  color: #7353ad !important;
+  background-color: #ebeaea;
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  background: linear-gradient(
+    226deg,
+    rgba(117, 76, 164, 1) 0%,
+    rgba(103, 123, 229, 1) 100%
+  ) !important;
+  height: 3px;
+  border-radius: 2px;
+  width: 35% !important;
+}
