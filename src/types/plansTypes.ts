@@ -11,6 +11,13 @@ export interface Plan {
   notes: string;
 }
 
+export interface PlanWithOptionalFields
+  extends Omit<Plan, "notes" | "homework"> {
+  notes?: string;
+  homework?: string;
+  file?: File;
+}
+
 export interface ScanPlanResponse {
   plan: Plan;
 }
