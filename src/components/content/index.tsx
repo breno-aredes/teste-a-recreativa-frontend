@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import { Card, Tabs, Layout } from "antd";
 import { FileAddOutlined, UnorderedListOutlined } from "@ant-design/icons";
-
 import { FaEdit, FaUpload } from "react-icons/fa";
-
 import "./styles.css";
 import FileUpload from "@/components/FileInput";
+import { plansServices } from "@/services/plansServices";
+import { useLoading } from "@/hooks/useLoading";
 
 const { Content } = Layout;
 
 export default function HomeContent({}) {
   const [activeTab, setActiveTab] = useState("1");
-  const [uploadedFile, setUploadedFile] = useState();
+  const [uploadedFile, setUploadedFile] = useState<File | undefined>(undefined);
+  const { setLoading } = useLoading();
 
-  const handleFileUpload = (file: any) => {
+  const handleFileUpload = async (file: File) => {
     setUploadedFile(file);
+    try {
+      setLoading(true);
+      const res = await plansServices.ScanPlan(file);
+      console.log(res.data);
+    } catch (err) {
+      console.error("Erro ao enviar plano:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,7 +59,6 @@ export default function HomeContent({}) {
                       <FileUpload onFileUpload={handleFileUpload} />
                     </Card>
                   </div>
-
                   <div className="col">
                     <Card
                       className="custom-header-card"

@@ -13,8 +13,8 @@ import "./styles.css";
 
 const { Dragger } = Upload;
 
-interface FileUploadProps {
-  onFileUpload: (file: File | null) => void;
+export interface FileUploadProps {
+  onFileUpload: (file: File) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
