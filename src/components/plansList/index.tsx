@@ -19,6 +19,7 @@ import "./styles.css";
 import "../../styles/globalStyles.css";
 import { useLoading } from "@/hooks/useLoading";
 import { renderAsync } from "docx-preview";
+import { generatePlanPdf } from "@/utils/generatePlanPdf";
 
 export default function PlansList() {
   const [plans, setPlans] = useState<PlanResponse[]>([]);
@@ -45,7 +46,7 @@ export default function PlansList() {
   }, []);
 
   const handleGeneratePdf = (plan: PlanResponse) => {
-    alert(`Gerar PDF para plano: ${plan.title}`);
+    generatePlanPdf(plan);
   };
 
   const handlePreviewOriginal = async (plan: PlanResponse) => {
