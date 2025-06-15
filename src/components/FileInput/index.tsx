@@ -22,11 +22,10 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
   const [uploading, setUploading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [messageApi, contextHolder] = antdMessage.useMessage();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-
-  const docxContainerRef = useRef<HTMLDivElement>(null);
+  const [docxReady, setDocxReady] = useState(false);
+  const docxContainerRef = useRef<HTMLDivElement | null>(null);
 
   const uploadProps: UploadProps = {
     name: "document",
@@ -64,11 +63,14 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
       setIsModalOpen(true);
+      setDocxReady(false);
     } else if (
       file.type ===
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     ) {
       setIsModalOpen(true);
+      setDocxReady(false);
+      setPreviewUrl(null);
     } else {
       messageApi.warning(
         "Visualização disponível apenas para arquivos PDF e DOCX (.docx)."
@@ -83,6 +85,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         file &&
         file.type ===
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" &&
+        docxReady &&
         docxContainerRef.current
       ) {
         docxContainerRef.current.innerHTML = "";
@@ -107,7 +110,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       }
     };
     renderDocx();
-  }, [isModalOpen, file, messageApi]);
+  }, [isModalOpen, file, messageApi, docxReady]);
 
   const handleCloseModal = () => {
     if (previewUrl) {
@@ -115,6 +118,10 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       setPreviewUrl(null);
     }
     setIsModalOpen(false);
+    setDocxReady(false);
+    if (docxContainerRef.current) {
+      docxContainerRef.current.innerHTML = "";
+    }
   };
 
   const handleDownload = () => {
@@ -155,7 +162,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         <Space className="file">
           <span>{file.name}</span>
           <div className="file-buttons">
-            {" "}
             <Button
               icon={<EyeOutlined />}
               type="primary"
@@ -193,6 +199,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         footer={null}
         width="90vw"
         className="custom-modal"
+        destroyOnHidden={true}
       >
         {previewUrl && (
           <iframe
@@ -205,7 +212,13 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         {isModalOpen &&
           file?.type ===
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document" && (
-            <div ref={docxContainerRef} className="docx-style" />
+            <div
+              ref={(el) => {
+                docxContainerRef.current = el;
+                setDocxReady(!!el);
+              }}
+              className="docx-style"
+            />
           )}
       </Modal>
     </Space>
