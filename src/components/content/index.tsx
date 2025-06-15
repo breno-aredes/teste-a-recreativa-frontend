@@ -8,6 +8,7 @@ import { plansServices } from "@/services/plansServices";
 import { useLoading } from "@/hooks/useLoading";
 import PlanForm from "../planForm";
 import { Plan, PlanWithOptionalFields } from "@/types/plansTypes";
+import PlansList from "../plansList";
 
 const { Content } = Layout;
 
@@ -114,6 +115,7 @@ export default function HomeContent({}) {
                   Planos de Aula
                 </span>
               ),
+              children: <PlansList />,
             },
           ]}
         />

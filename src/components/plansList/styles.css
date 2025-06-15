@@ -1,0 +1,77 @@
+.plans-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+.plans-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.plans-title {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.plans-badge .ant-badge-count {
+  background-color: #1677ff;
+  font-size: 15px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card {
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px #f0f1f2;
+  margin-bottom: 16px;
+}
+
+.plan-title {
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan-tags {
+  margin-top: 8px;
+  display: flex;
+}
+
+.plan-date {
+  margin-top: 8px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.plan-date-icon {
+  margin-right: 4px;
+}
+
+.custom-modal {
+  top: 5vh !important;
+  padding: 0 !important;
+  max-width: 90vw !important;
+}
+
+.custom-modal .ant-modal-content {
+  padding: 20px !important;
+}
+
+.custom-modal .ant-modal-body {
+  height: 80vh !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}

@@ -3,6 +3,7 @@ import { Form, Input, Button, FormInstance } from "antd";
 import { Plan } from "@/types/plansTypes";
 import "../../styles/globalStyles.css";
 const { TextArea } = Input;
+import { SaveOutlined } from "@ant-design/icons";
 
 interface PlanFormProps {
   form: FormInstance<Plan>;
@@ -21,11 +22,7 @@ const PlanForm: React.FC<PlanFormProps> = ({ form, onFinish }) => {
       <Form.Item label="Ano/Série" name="grade" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item
-        label="Data/Duração"
-        name="duration"
-        rules={[{ required: true }]}
-      >
+      <Form.Item label="Duração" name="duration" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item
@@ -60,6 +57,7 @@ const PlanForm: React.FC<PlanFormProps> = ({ form, onFinish }) => {
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="custom-button ">
+          <SaveOutlined />
           Salvar Plano
         </Button>
       </Form.Item>

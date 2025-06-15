@@ -18,6 +18,14 @@ export interface PlanWithOptionalFields
   file?: File;
 }
 
+export interface PlanResponse extends Omit<Plan, "notes" | "homework"> {
+  notes?: string;
+  homework?: string;
+  filePath?: File;
+  createdAt: string;
+  id: string;
+}
+
 export interface ScanPlanResponse {
   plan: Plan;
 }

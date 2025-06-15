@@ -3,6 +3,10 @@ import { api } from "./api";
 import { PlanWithOptionalFields, ScanPlanResponse } from "@/types/plansTypes";
 
 export const plansServices = {
+  GetPlans() {
+    return api.get("/plans");
+  },
+
   CreatePlan(data: PlanWithOptionalFields) {
     console.log(data);
     const formData = new FormData();
