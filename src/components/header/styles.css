@@ -31,13 +31,13 @@
   .header-home {
     height: 64px;
     gap: 8px;
-    padding: 0 6px;
+    padding: 0 20px;
   }
   .header-home-icon {
-    font-size: 24px !important;
+    font-size: 30px !important;
   }
   .h1-home {
-    font-size: 15px !important;
+    font-size: 20px !important;
     margin-top: 0;
   }
 }
