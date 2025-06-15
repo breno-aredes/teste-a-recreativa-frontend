@@ -18,6 +18,7 @@ export default function HomeContent({}) {
   const [plan, setPlan] = useState<Plan | undefined>(undefined);
   const [form] = Form.useForm<Plan>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [reloadListKey, setReloadListKey] = useState(0);
 
   const handleFileUpload = async (file: File) => {
     try {
@@ -50,6 +51,8 @@ export default function HomeContent({}) {
       };
 
       await plansServices.CreatePlan(planWithFile);
+      setReloadListKey((prev) => prev + 1);
+      setActiveTab("2");
     } catch (err) {
       console.error("Erro ao criar plano:", err);
     } finally {
@@ -115,7 +118,7 @@ export default function HomeContent({}) {
                   Planos de Aula
                 </span>
               ),
-              children: <PlansList />,
+              children: <PlansList key={reloadListKey} />,
             },
           ]}
         />

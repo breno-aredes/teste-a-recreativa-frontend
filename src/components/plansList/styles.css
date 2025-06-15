@@ -3,11 +3,6 @@
   flex-direction: column;
 }
 
-.plan-card {
-  border-radius: 10px;
-  box-shadow: 0 2px 8px #f0f1f2;
-}
-
 .plans-header {
   display: flex;
   align-items: center;
@@ -24,11 +19,6 @@
   font-size: 15px;
   margin-bottom: 6px;
   margin-left: 2px;
-}
-
-.plans-list {
-  display: flex;
-  flex-direction: column;
 }
 
 .plan-card {
@@ -74,4 +64,40 @@
   height: 80vh !important;
   padding: 0 !important;
   overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+  .plan-title {
+    font-size: 15px;
+  }
+
+  .plan-actions {
+    gap: 8px;
+  }
+
+  .plan-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .custom-button {
+    width: 100%;
+  }
+
+  .plan-card {
+    padding: 12px;
+  }
+
+  .custom-modal {
+    top: 2vh !important;
+    width: 100vw !important;
+  }
+
+  .custom-modal .ant-modal-body {
+    height: 70vh !important;
+  }
+
+  iframe {
+    height: 70vh;
+  }
 }

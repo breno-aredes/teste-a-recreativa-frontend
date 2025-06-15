@@ -19,6 +19,7 @@ import "./styles.css";
 import "../../styles/globalStyles.css";
 import { useLoading } from "@/hooks/useLoading";
 import { renderAsync } from "docx-preview";
+import { generatePlanPdf } from "@/utils/generatePlanPdf";
 
 export default function PlansList() {
   const [plans, setPlans] = useState<PlanResponse[]>([]);
@@ -29,6 +30,18 @@ export default function PlansList() {
   const [previewFileName, setPreviewFileName] = useState<string>("");
   const [docxReady, setDocxReady] = useState(false);
   const docxContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // checa no carregamento inicial
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     async function fetchPlans() {
@@ -45,7 +58,7 @@ export default function PlansList() {
   }, []);
 
   const handleGeneratePdf = (plan: PlanResponse) => {
-    alert(`Gerar PDF para plano: ${plan.title}`);
+    generatePlanPdf(plan);
   };
 
   const handlePreviewOriginal = async (plan: PlanResponse) => {
@@ -138,7 +151,7 @@ export default function PlansList() {
                   onClick={() => handlePreviewOriginal(plan)}
                   disabled={!plan.filePath}
                 >
-                  Original
+                  {!isMobile && "Original"}
                 </Button>
                 <Button
                   icon={<FilePdfOutlined />}
@@ -146,7 +159,7 @@ export default function PlansList() {
                   className="custom-button"
                   onClick={() => handleGeneratePdf(plan)}
                 >
-                  Gerar PDF
+                  {!isMobile && "Gerar PDF"}
                 </Button>
               </Space>
             </div>
