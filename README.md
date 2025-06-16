@@ -87,13 +87,6 @@ O back-end correspondente está disponível em:
 
 ---
 
-## Integração com o Back-end
-
-O back-end correspondente está disponível em:  
-[breno-aredes/teste-a-recreativa-backend](https://github.com/breno-aredes/teste-a-recreativa-backend)
-
----
-
 ## Tecnologias Utilizadas
 
 - **TypeScript:** Linguagem principal do projeto.
