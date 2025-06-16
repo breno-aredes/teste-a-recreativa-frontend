@@ -62,7 +62,7 @@ Siga os passos abaixo para rodar o front-end localmente:
 4. **Configure as variáveis de ambiente:**
 
    - Crie um arquivo `.env` na raiz do projeto.
-   - Use o arquivo `.env.example` como referência para preencher as configurações necessárias (como a URL do back-end).
+   - Use o arquivo `.env.example` como referência.
 
 5. **Inicie o servidor de desenvolvimento:**
 
@@ -80,7 +80,6 @@ O back-end correspondente está disponível em:
 [breno-aredes/teste-a-recreativa-backend](https://github.com/breno-aredes/teste-a-recreativa-backend)
 
 > **Importante:**  
-> Certifique-se de que o front-end está configurado para apontar para a URL correta do back-end (ex: `http://localhost:4000`).  
 > Consulte o README do back-end para detalhes sobre configuração do `.env`.
 
 > **Observação:**  
